@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p class="alert-info">
+    <marquee>Première application ASP .net avec Bootstrap inclut.</marquee>
+</p>
+    <form action=@Url.Action("blog") method="post">
+        <div class="form-horizontal">
+            
+            <input type="text" name="Nom" class="form-control" />
+            <input type="text" name="Prenom" class="form-control" />
+            <button class="btn btn-primary " type="submit">Envoyer</button>
+        </div>
+    </form>
+<a href="@Url.Action("ListClients")">Liste des clients</a>
+    
+

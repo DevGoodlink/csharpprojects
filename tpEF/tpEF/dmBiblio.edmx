@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="tpEFModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="auteur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="nvarchar" MaxLength="20" />
+          <Property Name="Prenom" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="ouvrage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Titre" Type="nvarchar" MaxLength="20" />
+          <Property Name="ID_Auteur" Type="int" />
+        </EntityType>
+        <Association Name="FK__ouvrage__ID_Aute__25869641">
+          <End Role="auteur" Type="Self.auteur" Multiplicity="0..1" />
+          <End Role="ouvrage" Type="Self.ouvrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ouvrage">
+              <PropertyRef Name="ID_Auteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tpEFModelStoreContainer">
+          <EntitySet Name="auteur" EntityType="Self.auteur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ouvrage" EntityType="Self.ouvrage" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__ouvrage__ID_Aute__25869641" Association="Self.FK__ouvrage__ID_Aute__25869641">
+            <End Role="auteur" EntitySet="auteur" />
+            <End Role="ouvrage" EntitySet="ouvrage" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tpEFModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="auteur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ouvrages" Relationship="Self.FK__ouvrage__ID_Aute__25869641" FromRole="auteur" ToRole="ouvrage" />
+        </EntityType>
+        <EntityType Name="ouvrage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Titre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ID_Auteur" Type="Int32" />
+          <NavigationProperty Name="auteur" Relationship="Self.FK__ouvrage__ID_Aute__25869641" FromRole="ouvrage" ToRole="auteur" />
+        </EntityType>
+        <Association Name="FK__ouvrage__ID_Aute__25869641">
+          <End Role="auteur" Type="Self.auteur" Multiplicity="0..1" />
+          <End Role="ouvrage" Type="Self.ouvrage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auteur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ouvrage">
+              <PropertyRef Name="ID_Auteur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tpEFEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="auteurs" EntityType="Self.auteur" />
+          <EntitySet Name="ouvrages" EntityType="Self.ouvrage" />
+          <AssociationSet Name="FK__ouvrage__ID_Aute__25869641" Association="Self.FK__ouvrage__ID_Aute__25869641">
+            <End Role="auteur" EntitySet="auteurs" />
+            <End Role="ouvrage" EntitySet="ouvrages" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tpEFModelStoreContainer" CdmEntityContainer="tpEFEntities">
+          <EntitySetMapping Name="auteurs">
+            <EntityTypeMapping TypeName="tpEFModel.auteur">
+              <MappingFragment StoreEntitySet="auteur">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ouvrages">
+            <EntityTypeMapping TypeName="tpEFModel.ouvrage">
+              <MappingFragment StoreEntitySet="ouvrage">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Titre" ColumnName="Titre" />
+                <ScalarProperty Name="ID_Auteur" ColumnName="ID_Auteur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

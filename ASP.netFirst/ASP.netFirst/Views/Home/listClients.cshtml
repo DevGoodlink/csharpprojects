@@ -1,0 +1,22 @@
+﻿@using ASP.netFirst.Models;
+@{
+    
+    ViewBag.Title = "listClients";
+    List<Client> liste = new Clients().ListeClients();
+}
+
+<h2>listClients</h2>
+
+<br />
+<table>
+    
+    <thead>
+        <th>ID</th><th>Nom</th><th>Age</th>
+    </thead>
+    
+@foreach (Client c in liste)
+{
+    <tr><td>0</td><td>@c.Nom</td><td>@c.Age</td></tr>
+}
+</table>
+

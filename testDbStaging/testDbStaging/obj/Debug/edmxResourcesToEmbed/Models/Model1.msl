@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="AGINGs">
+      <EntityTypeMapping TypeName="Model.AGING">
+        <MappingFragment StoreEntitySet="AGING">
+          <ScalarProperty Name="AGING_ID" ColumnName="AGING_ID" />
+          <ScalarProperty Name="AGING_DESCRIPTION" ColumnName="AGING_DESCRIPTION" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FACT_MFI">
+      <EntityTypeMapping TypeName="Model.FACT_MFI">
+        <MappingFragment StoreEntitySet="FACT_MFI">
+          <ScalarProperty Name="MFI_ID" ColumnName="MFI_ID" />
+          <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+          <ScalarProperty Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" ColumnName="NUMBER_OF_REGISTERED_CLIENTS_YTD" />
+          <ScalarProperty Name="NUMBER_OF_CLIENTS_WITH_LOANS" ColumnName="NUMBER_OF_CLIENTS_WITH_LOANS" />
+          <ScalarProperty Name="MALE_CLIENTS_YTD" ColumnName="MALE_CLIENTS_YTD" />
+          <ScalarProperty Name="FEMALE_CLIENTS_YTD" ColumnName="FEMALE_CLIENTS_YTD" />
+          <ScalarProperty Name="MALE_CLIENTS_35" ColumnName="MALE_CLIENTS_35" />
+          <ScalarProperty Name="FEMALE_CLIENTS_35" ColumnName="FEMALE_CLIENTS_35" />
+          <ScalarProperty Name="NB_BRANCH_RURAL" ColumnName="NB_BRANCH_RURAL" />
+          <ScalarProperty Name="NB_BRANCH_URBAN" ColumnName="NB_BRANCH_URBAN" />
+          <ScalarProperty Name="GROSS_OUTSTANDING_PORTFOLIO" ColumnName="GROSS_OUTSTANDING_PORTFOLIO" />
+          <ScalarProperty Name="OUTSTANDING_LOAN_GENDER_MALE" ColumnName="OUTSTANDING_LOAN_GENDER_MALE" />
+          <ScalarProperty Name="OUTSTANDING_LOAN_GENDER_FEMALE" ColumnName="OUTSTANDING_LOAN_GENDER_FEMALE" />
+          <ScalarProperty Name="TOTAL_LOAN_DISBURSED" ColumnName="TOTAL_LOAN_DISBURSED" />
+          <ScalarProperty Name="LOAN_DISBURSED_WOMEN" ColumnName="LOAN_DISBURSED_WOMEN" />
+          <ScalarProperty Name="LOAN_DISBURSED_MEN" ColumnName="LOAN_DISBURSED_MEN" />
+          <ScalarProperty Name="CURRENT_MFI" ColumnName="CURRENT_MFI" />
+          <ScalarProperty Name="OVERDUE_1_30" ColumnName="OVERDUE_1_30" />
+          <ScalarProperty Name="OVERDUE_31_60" ColumnName="OVERDUE_31_60" />
+          <ScalarProperty Name="OVERDUE_61_90" ColumnName="OVERDUE_61_90" />
+          <ScalarProperty Name="OVERDUE_91_180" ColumnName="OVERDUE_91_180" />
+          <ScalarProperty Name="OVERDUE_181_365" ColumnName="OVERDUE_181_365" />
+          <ScalarProperty Name="OVERDUE_365" ColumnName="OVERDUE_365" />
+          <ScalarProperty Name="CURRENT_PAR_0" ColumnName="CURRENT_PAR_0" />
+          <ScalarProperty Name="PAR_1_30_DAYS" ColumnName="PAR_1_30_DAYS" />
+          <ScalarProperty Name="PAR_31_60_DAYS" ColumnName="PAR_31_60_DAYS" />
+          <ScalarProperty Name="PAR_61_90" ColumnName="PAR_61_90" />
+          <ScalarProperty Name="PAR_91_180" ColumnName="PAR_91_180" />
+          <ScalarProperty Name="PAR_181_365" ColumnName="PAR_181_365" />
+          <ScalarProperty Name="PAR_365" ColumnName="PAR_365" />
+          <ScalarProperty Name="NO_OF_LOANS_SECTOR" ColumnName="NO_OF_LOANS_SECTOR" />
+          <ScalarProperty Name="OUTSTANDING_LOAN_SECTOR" ColumnName="OUTSTANDING_LOAN_SECTOR" />
+          <ScalarProperty Name="PAR_30_SECTOR_AMT" ColumnName="PAR_30_SECTOR_AMT" />
+          <ScalarProperty Name="NO_OF_LOANS_PURPOSE" ColumnName="NO_OF_LOANS_PURPOSE" />
+          <ScalarProperty Name="OUTSTANDING_LOAN_PURPOSE" ColumnName="OUTSTANDING_LOAN_PURPOSE" />
+          <ScalarProperty Name="PAR_30_PURPOSE_AMT" ColumnName="PAR_30_PURPOSE_AMT" />
+          <ScalarProperty Name="PURPOSE_ID" ColumnName="PURPOSE_ID" />
+          <ScalarProperty Name="AGING_ID" ColumnName="AGING_ID" />
+          <ScalarProperty Name="DATE_ID" ColumnName="DATE_ID" />
+          <ScalarProperty Name="TK_ID" ColumnName="TK_ID" />
+          <ScalarProperty Name="MONTH_ID" ColumnName="MONTH_ID" />
+          <ScalarProperty Name="YEAR_ID" ColumnName="YEAR_ID" />
+          <ScalarProperty Name="QUARTER_ID" ColumnName="QUARTER_ID" />
+          <ScalarProperty Name="WEEK_ID" ColumnName="WEEK_ID" />
+          <ScalarProperty Name="fact_id" ColumnName="fact_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MFI_DETAILS">
+      <EntityTypeMapping TypeName="Model.MFI_DETAILS">
+        <MappingFragment StoreEntitySet="MFI_DETAILS">
+          <ScalarProperty Name="MFI_id" ColumnName="MFI_id" />
+          <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+          <ScalarProperty Name="Year_of_incorporation" ColumnName="Year_of_incorporation" />
+          <ScalarProperty Name="members_of_the_board" ColumnName="members_of_the_board" />
+          <ScalarProperty Name="Number_of_staff" ColumnName="Number_of_staff" />
+          <ScalarProperty Name="Number_of_loan_officers" ColumnName="Number_of_loan_officers" />
+          <ScalarProperty Name="MIS" ColumnName="MIS" />
+          <ScalarProperty Name="Mission_statement" ColumnName="Mission_statement" />
+          <ScalarProperty Name="Vision_statement" ColumnName="Vision_statement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PURPOSEs">
+      <EntityTypeMapping TypeName="Model.PURPOSE">
+        <MappingFragment StoreEntitySet="PURPOSE">
+          <ScalarProperty Name="PURPOSE_ID" ColumnName="PURPOSE_ID" />
+          <ScalarProperty Name="PURPOSE_DESCRIPTION" ColumnName="PURPOSE_DESCRIPTION" />
+          <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SECTORs">
+      <EntityTypeMapping TypeName="Model.SECTOR">
+        <MappingFragment StoreEntitySet="SECTOR">
+          <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+          <ScalarProperty Name="SECTOR_DESCRIPTION" ColumnName="SECTOR_DESCRIPTION" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CLIENT_SEXE_BY_MFI" FunctionName="Model.Store.CLIENT_SEXE_BY_MFI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.CLIENT_SEXE_BY_MFI_Result">
+          <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+          <ScalarProperty Name="MALE_CLIENTS_YTD" ColumnName="MALE_CLIENTS_YTD" />
+          <ScalarProperty Name="FEMALE_CLIENTS_YTD" ColumnName="FEMALE_CLIENTS_YTD" />
+          <ScalarProperty Name="NUMBER_OF_CLIENTS_WITH_LOANS" ColumnName="NUMBER_OF_CLIENTS_WITH_LOANS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="RURAL_URBAN_BY_MFI" FunctionName="Model.Store.RURAL_URBAN_BY_MFI">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="Model.RURAL_URBAN_BY_MFI_Result">
+          <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+          <ScalarProperty Name="NB_BRANCH_RURAL" ColumnName="NB_BRANCH_RURAL" />
+          <ScalarProperty Name="NB_BRANCH_URBAN" ColumnName="NB_BRANCH_URBAN" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutoEcoleModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ELEVE">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="smallint" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="dateInscription" Type="smalldatetime" Nullable="false" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="creditHoraire" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LECON">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="int" Nullable="false" />
+          <Property Name="date" Type="smalldatetime" Nullable="false" />
+          <Property Name="codeEleve" Type="smallint" />
+          <Property Name="heure" Type="smallint" />
+          <Property Name="duree" Type="smallint" />
+          <Property Name="effectuee" Type="bit" Nullable="false" />
+          <Property Name="numImmaVehicule" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VEHICULE">
+          <Key>
+            <PropertyRef Name="numImma" />
+          </Key>
+          <Property Name="numImma" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="modele" Type="nvarchar" MaxLength="15" />
+          <Property Name="couleur" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_LECON_ELEVE">
+          <End Role="ELEVE" Type="Self.ELEVE" Multiplicity="0..1" />
+          <End Role="LECON" Type="Self.LECON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ELEVE">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="LECON">
+              <PropertyRef Name="codeEleve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LECON_VEHICULE">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="0..1" />
+          <End Role="LECON" Type="Self.LECON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="numImma" />
+            </Principal>
+            <Dependent Role="LECON">
+              <PropertyRef Name="numImmaVehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="pEleve_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nom" Type="nvarchar" Mode="In" />
+          <Parameter Name="dateInscription" Type="smalldatetime" Mode="In" />
+          <Parameter Name="prenom" Type="nvarchar" Mode="In" />
+          <Parameter Name="adresse" Type="nvarchar" Mode="In" />
+          <Parameter Name="creditHoraire" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="AutoEcoleModelStoreContainer">
+          <EntitySet Name="ELEVE" EntityType="Self.ELEVE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LECON" EntityType="Self.LECON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VEHICULE" EntityType="Self.VEHICULE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_LECON_ELEVE" Association="Self.FK_LECON_ELEVE">
+            <End Role="ELEVE" EntitySet="ELEVE" />
+            <End Role="LECON" EntitySet="LECON" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LECON_VEHICULE" Association="Self.FK_LECON_VEHICULE">
+            <End Role="VEHICULE" EntitySet="VEHICULE" />
+            <End Role="LECON" EntitySet="LECON" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutoEcoleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ELEVE">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="Int16" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="dateInscription" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="prenom" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="creditHoraire" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LECONs" Relationship="Self.FK_LECON_ELEVE" FromRole="ELEVE" ToRole="LECON" />
+        </EntityType>
+        <EntityType Name="LECON">
+          <Key>
+            <PropertyRef Name="numero" />
+          </Key>
+          <Property Name="numero" Type="Int32" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="codeEleve" Type="Int16" />
+          <Property Name="heure" Type="Int16" />
+          <Property Name="duree" Type="Int16" />
+          <Property Name="effectuee" Type="Boolean" Nullable="false" />
+          <Property Name="numImmaVehicule" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ELEVE" Relationship="Self.FK_LECON_ELEVE" FromRole="LECON" ToRole="ELEVE" />
+          <NavigationProperty Name="VEHICULE" Relationship="Self.FK_LECON_VEHICULE" FromRole="LECON" ToRole="VEHICULE" />
+        </EntityType>
+        <EntityType Name="VEHICULE">
+          <Key>
+            <PropertyRef Name="numImma" />
+          </Key>
+          <Property Name="numImma" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="modele" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="couleur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LECONs" Relationship="Self.FK_LECON_VEHICULE" FromRole="VEHICULE" ToRole="LECON" />
+        </EntityType>
+        <Association Name="FK_LECON_ELEVE">
+          <End Role="ELEVE" Type="Self.ELEVE" Multiplicity="0..1" />
+          <End Role="LECON" Type="Self.LECON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ELEVE">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="LECON">
+              <PropertyRef Name="codeEleve" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LECON_VEHICULE">
+          <End Role="VEHICULE" Type="Self.VEHICULE" Multiplicity="0..1" />
+          <End Role="LECON" Type="Self.LECON" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VEHICULE">
+              <PropertyRef Name="numImma" />
+            </Principal>
+            <Dependent Role="LECON">
+              <PropertyRef Name="numImmaVehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutoEcoleEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ELEVEs" EntityType="Self.ELEVE" />
+          <EntitySet Name="LECONs" EntityType="Self.LECON" />
+          <EntitySet Name="VEHICULEs" EntityType="Self.VEHICULE" />
+          <AssociationSet Name="FK_LECON_ELEVE" Association="Self.FK_LECON_ELEVE">
+            <End Role="ELEVE" EntitySet="ELEVEs" />
+            <End Role="LECON" EntitySet="LECONs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LECON_VEHICULE" Association="Self.FK_LECON_VEHICULE">
+            <End Role="VEHICULE" EntitySet="VEHICULEs" />
+            <End Role="LECON" EntitySet="LECONs" />
+          </AssociationSet>
+          <FunctionImport Name="pEleve_INSERT">
+            <Parameter Name="nom" Mode="In" Type="String" />
+            <Parameter Name="dateInscription" Mode="In" Type="DateTime" />
+            <Parameter Name="prenom" Mode="In" Type="String" />
+            <Parameter Name="adresse" Mode="In" Type="String" />
+            <Parameter Name="creditHoraire" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="AjoutEleve" EntitySet="ELEVEs" ReturnType="Collection(AutoEcoleModel.ELEVE)">
+            <Parameter Name="nom" Mode="In" Type="String" />
+            <Parameter Name="dateInscription" Mode="In" Type="DateTime" />
+            <Parameter Name="prenom" Mode="In" Type="String" />
+            <Parameter Name="adresse" Mode="In" Type="String" />
+            <Parameter Name="creditHoraire" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutoEcoleModelStoreContainer" CdmEntityContainer="AutoEcoleEntities1">
+          <EntitySetMapping Name="ELEVEs">
+            <EntityTypeMapping TypeName="AutoEcoleModel.ELEVE">
+              <MappingFragment StoreEntitySet="ELEVE">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="creditHoraire" ColumnName="creditHoraire" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LECONs">
+            <EntityTypeMapping TypeName="AutoEcoleModel.LECON">
+              <MappingFragment StoreEntitySet="LECON">
+                <ScalarProperty Name="numero" ColumnName="numero" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="codeEleve" ColumnName="codeEleve" />
+                <ScalarProperty Name="heure" ColumnName="heure" />
+                <ScalarProperty Name="duree" ColumnName="duree" />
+                <ScalarProperty Name="effectuee" ColumnName="effectuee" />
+                <ScalarProperty Name="numImmaVehicule" ColumnName="numImmaVehicule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VEHICULEs">
+            <EntityTypeMapping TypeName="AutoEcoleModel.VEHICULE">
+              <MappingFragment StoreEntitySet="VEHICULE">
+                <ScalarProperty Name="numImma" ColumnName="numImma" />
+                <ScalarProperty Name="modele" ColumnName="modele" />
+                <ScalarProperty Name="couleur" ColumnName="couleur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="pEleve_INSERT" FunctionName="AutoEcoleModel.Store.pEleve_INSERT" />
+          <FunctionImportMapping FunctionImportName="AjoutEleve" FunctionName="AutoEcoleModel.Store.pEleve_INSERT" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,11 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\tpTransaction.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\tpTransaction.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\tpTransaction.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\EntityFramework.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\EntityFramework.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\bin\Debug\fr\EntityFramework.resources.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\obj\Debug\tpTransaction.csprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\obj\Debug\tpTransaction.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpTransaction\tpTransaction\obj\Debug\tpTransaction.pdb

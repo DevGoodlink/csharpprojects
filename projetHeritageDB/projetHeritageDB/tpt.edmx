@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="tptModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PERMANENT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="salaireMensuel" Type="money" />
+        </EntityType>
+        <EntityType Name="PROF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="10" />
+          <Property Name="Prenom" Type="varchar" MaxLength="10" />
+          <Property Name="email" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="VACCATAIRE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="TauxHoraire" Type="int" />
+          <Property Name="nbreHeure" Type="int" />
+        </EntityType>
+        <Association Name="FK_PERMANENT_PROF">
+          <End Role="PROF" Type="Self.PROF" Multiplicity="1" />
+          <End Role="PERMANENT" Type="Self.PERMANENT" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PROF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PERMANENT">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VACCATAIRE_PROF">
+          <End Role="PROF" Type="Self.PROF" Multiplicity="1" />
+          <End Role="VACCATAIRE" Type="Self.VACCATAIRE" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="PROF">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VACCATAIRE">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="tptModelStoreContainer">
+          <EntitySet Name="PERMANENT" EntityType="Self.PERMANENT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PROF" EntityType="Self.PROF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VACCATAIRE" EntityType="Self.VACCATAIRE" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PERMANENT_PROF" Association="Self.FK_PERMANENT_PROF">
+            <End Role="PROF" EntitySet="PROF" />
+            <End Role="PERMANENT" EntitySet="PERMANENT" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VACCATAIRE_PROF" Association="Self.FK_VACCATAIRE_PROF">
+            <End Role="PROF" EntitySet="PROF" />
+            <End Role="VACCATAIRE" EntitySet="VACCATAIRE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="tptModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="PERMANENT" BaseType="tptModel.PROF">
+          <Property Name="salaireMensuel" Type="Decimal" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="PROF">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Prenom" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VACCATAIRE" BaseType="tptModel.PROF">
+          <Property Name="TauxHoraire" Type="Int32" />
+          <Property Name="nbreHeure" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="tptEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PROFs" EntityType="Self.PROF" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="tptModelStoreContainer" CdmEntityContainer="tptEntities">
+          <EntitySetMapping Name="PROFs">
+            <EntityTypeMapping TypeName="IsTypeOf(tptModel.PROF)">
+              <MappingFragment StoreEntitySet="PROF">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(tptModel.PERMANENT)">
+              <MappingFragment StoreEntitySet="PERMANENT">
+                <ScalarProperty Name="salaireMensuel" ColumnName="salaireMensuel" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(tptModel.VACCATAIRE)">
+              <MappingFragment StoreEntitySet="VACCATAIRE">
+                <ScalarProperty Name="nbreHeure" ColumnName="nbreHeure" />
+                <ScalarProperty Name="TauxHoraire" ColumnName="TauxHoraire" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

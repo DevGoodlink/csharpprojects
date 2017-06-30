@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1412479d344749948ea03ab86f24aa47" Name="Diagram1">
+        <EntityTypeShape EntityType="AutoEcoleModel.ELEVE" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoEcoleModel.LECON" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoEcoleModel.VEHICULE" Width="1.5" PointX="7.625" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="AutoEcoleModel.FK_LECON_ELEVE" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoEcoleModel.FK_LECON_VEHICULE" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

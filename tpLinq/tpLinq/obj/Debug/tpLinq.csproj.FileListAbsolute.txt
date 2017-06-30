@@ -1,0 +1,11 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\tpLinq.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\tpLinq.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\tpLinq.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\EntityFramework.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\EntityFramework.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\bin\Debug\fr\EntityFramework.resources.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\obj\Debug\tpLinq.csprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\obj\Debug\tpLinq.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpLinq\tpLinq\obj\Debug\tpLinq.pdb

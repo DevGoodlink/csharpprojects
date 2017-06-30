@@ -1,0 +1,13 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\bin\Debug\tp1_ado.net.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\bin\Debug\tp1_ado.net.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\bin\Debug\tp1_ado.net.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\bin\Debug\tp1_ado.net.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.Form2.resources
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\tp1_ado.net\tp1_ado.net\obj\Debug\tp1_ado.net.dessin.resources

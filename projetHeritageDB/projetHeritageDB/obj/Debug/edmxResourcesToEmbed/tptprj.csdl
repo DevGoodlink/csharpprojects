@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tptModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="permanent" BaseType="tptModel.prof">
+    <Property Name="salaireMensuel" Type="Decimal" Precision="19" Scale="4" />
+  </EntityType>
+  <EntityType Name="prof">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="vaccataire" BaseType="tptModel.prof">
+    <Property Name="tauxHoraire" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="nbreHeure" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="tptprj" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="profs" EntityType="Self.prof" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,11 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\bin\Debug\premierExemple.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\bin\Debug\premierExemple.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\bin\Debug\premierExemple.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\bin\Debug\premierExemple.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\premierExemple\premierExemple\obj\Debug\premierExemple.secondExample.resources

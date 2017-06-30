@@ -1,0 +1,14 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\bin\Debug\ConvertisseurTemp.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\bin\Debug\ConvertisseurTemp.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\bin\Debug\ConvertisseurTemp.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.csprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.Properties.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.csproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.Form2.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.Form3.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\obj\Debug\ConvertisseurTemp.Form4.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\bin\Debug\meteo.mdf
+c:\users\yassalie\documents\visual studio 2015\Projects\ConvertisseurTemp\ConvertisseurTemp\bin\Debug\meteo_log.ldf

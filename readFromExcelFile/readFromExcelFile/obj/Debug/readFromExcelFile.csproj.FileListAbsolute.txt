@@ -1,0 +1,12 @@
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\bin\Debug\readFromExcelFile.exe.config
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\bin\Debug\readFromExcelFile.exe
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\bin\Debug\readFromExcelFile.pdb
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.csprojResolveAssemblyReference.cache
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\Interop.VBIDE.dll
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.csproj.ResolveComReference.cache
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.Form1.resources
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.Properties.Resources.resources
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.csproj.GenerateResource.Cache
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.exe
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.pdb
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\readFromExcelFile\readFromExcelFile\obj\Debug\readFromExcelFile.connectionTest.resources

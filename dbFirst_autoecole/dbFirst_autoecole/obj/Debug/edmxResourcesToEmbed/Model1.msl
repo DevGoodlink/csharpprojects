@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AutoEcoleModelStoreContainer" CdmEntityContainer="AutoEcoleEntities1">
+    <EntitySetMapping Name="ELEVEs">
+      <EntityTypeMapping TypeName="AutoEcoleModel.ELEVE">
+        <MappingFragment StoreEntitySet="ELEVE">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="creditHoraire" ColumnName="creditHoraire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LECONs">
+      <EntityTypeMapping TypeName="AutoEcoleModel.LECON">
+        <MappingFragment StoreEntitySet="LECON">
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="codeEleve" ColumnName="codeEleve" />
+          <ScalarProperty Name="heure" ColumnName="heure" />
+          <ScalarProperty Name="duree" ColumnName="duree" />
+          <ScalarProperty Name="effectuee" ColumnName="effectuee" />
+          <ScalarProperty Name="numImmaVehicule" ColumnName="numImmaVehicule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEHICULEs">
+      <EntityTypeMapping TypeName="AutoEcoleModel.VEHICULE">
+        <MappingFragment StoreEntitySet="VEHICULE">
+          <ScalarProperty Name="numImma" ColumnName="numImma" />
+          <ScalarProperty Name="modele" ColumnName="modele" />
+          <ScalarProperty Name="couleur" ColumnName="couleur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="pEleve_INSERT" FunctionName="AutoEcoleModel.Store.pEleve_INSERT" />
+    <FunctionImportMapping FunctionImportName="AjoutEleve" FunctionName="AutoEcoleModel.Store.pEleve_INSERT" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,11 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\bin\Debug\Facture.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\bin\Debug\Facture.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\bin\Debug\Facture.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\bin\Debug\Facture.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\Facture\Facture\obj\Debug\Facture.pdb

@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Valider";
+}
+
+<h2>Résultat de la validation de votre carte : </h2>
+
+<p>
+    <h3>Les informations que vous avez saisi :</h3>
+    <ul class="list-unstyled">
+        <li>Votre carte numéro : @ViewData["cn"]</li>
+        <li>votre token : @ViewData["token"]</li>
+    </ul>
+    <h2>@ViewData["message"]</h2>
+</p>

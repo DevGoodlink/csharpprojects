@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Formulaire étudiant</h2>
+
+@using (Html.BeginForm("MyAction","Home",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    <fieldset>
+        <legend>Nouvel étudiant</legend>
+        <label>Nom</label><input name="nom" type="text" />
+        <label>Prenom</label><input name="prenom" type="text" />
+        <label>Email</label><input name="email" type="email" />
+        <input type="submit" name="a" value="Nouveau" />
+        <input type="submit" name="b" value="Suivant" />
+
+    </fieldset>
+}

@@ -1,0 +1,11 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\bin\Debug\tp_connection.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\bin\Debug\tp_connection.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\bin\Debug\tp_connection.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\bin\Debug\tp_connection.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.FrmConnection.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tp_connection\tp_connection\obj\Debug\tp_connection.pdb

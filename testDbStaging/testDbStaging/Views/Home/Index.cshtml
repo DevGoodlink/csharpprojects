@@ -1,0 +1,178 @@
+﻿@using testDbStaging.Models;
+
+@{
+    ViewBag.Title = "Filter";
+}
+<p class="page-header">
+    Graph per KPI :
+</p>
+
+<style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
+<h2>MFI</h2>
+<div id="container" class="row">
+    <div class="col-md-3" >
+        <fieldset class="alert alert-info">
+            <label class="control-label">MFI</label>
+            @Html.DropDownList("SelectListMfi", null, new { @class = "form-control select-list", multiple = "multiple" })
+            <label class="control-label">Sector</label>
+            @Html.DropDownList("SelectListSector", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Porpose</label>
+            @Html.DropDownList("SelectListPorpose", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Aging</label>
+            @Html.DropDownList("SelectListAging", null, new { @class = "form-control select-list", multiple = "multiple" })
+            </br>
+            <input type="button" value="Apply" id="applymfi" class="form-control btn btn-success" />
+        </fieldset>
+    </div>
+    <div class="col-md-9">
+        <canvas id="mfi"></canvas>
+    </div>
+</div>
+<h2>Purpose</h2>
+<div id="container" class="row">
+    <div class="col-md-3">
+        <fieldset class="alert alert-info">
+            <label class="control-label">MFI</label>
+            @Html.DropDownList("SelectListMfi", null, new { @class = "form-control select-list", multiple = "multiple" })
+            <label class="control-label">Sector</label>
+            @Html.DropDownList("SelectListSector", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Porpose</label>
+            @Html.DropDownList("SelectListPorpose", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Aging</label>
+            @Html.DropDownList("SelectListAging", null, new { @class = "form-control select-list", multiple = "multiple" })
+            </br>
+            <input type="button" value="Apply" id="apply" class="form-control btn btn-success" />
+        </fieldset>
+    </div>
+    <div class="col-md-9">
+        <canvas id="purpose"></canvas>
+    </div>
+</div>
+<h2>Sector</h2>
+<div id="container" class="row">
+    <div class="col-md-3">
+        <fieldset class="alert alert-info">
+            <label class="control-label">MFI</label>
+            @Html.DropDownList("SelectListMfi", null, new { @class = "form-control select-list", multiple = "multiple" })
+            <label class="control-label">Sector</label>
+            @Html.DropDownList("SelectListSector", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Porpose</label>
+            @Html.DropDownList("SelectListPorpose", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Aging</label>
+            @Html.DropDownList("SelectListAging", null, new { @class = "form-control select-list", multiple = "multiple" })
+            </br>
+            <input type="button" value="Apply" id="apply" class="form-control btn btn-success" />
+        </fieldset>
+    </div>
+    <div class="col-md-9">
+        <canvas id="sector"></canvas>
+    </div>
+</div>
+<h2>Aging</h2>
+<div id="container" class="row">
+    <div class="col-md-3">
+        <fieldset class="alert alert-info">
+            <label class="control-label">MFI</label>
+            @Html.DropDownList("SelectListMfi", null, new { @class = "form-control select-list", multiple = "multiple" })
+            <label class="control-label">Sector</label>
+            @Html.DropDownList("SelectListSector", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Porpose</label>
+            @Html.DropDownList("SelectListPorpose", null, new { @class = "form-control select-list ", multiple = "multiple" })
+            <label class="control-label">Aging</label>
+            @Html.DropDownList("SelectListAging", null, new { @class = "form-control select-list", multiple = "multiple" })
+            </br>
+            <input type="button" value="Apply" id="apply" class="form-control btn btn-success" />
+        </fieldset>
+    </div>
+    <div class="col-md-9">
+        <canvas id="aging"></canvas>
+    </div>
+</div>
+<script>
+
+    $(document).ready(function () {
+        //console.log("Ok");
+        var LIBELLE = [];
+        var MALE_CLIENTS_YTD = [];
+        var FEMALE_CLIENTS_YTD = [];
+        var NUMBER_OF_CLIENTS_WITH_LOANS = [];
+        var DATASETS = [];
+        $("#refresh").click(function () {
+            var result = $.get("/Home/Action", function (data, status) {
+                if (status == "success") {
+                    var jsondata = JSON.parse(data);
+                    jsondata.forEach(function (e) {
+                        //console.log(e)
+                        LIBELLE.push(e.MFI_NAME);
+                        MALE_CLIENTS_YTD.push(e.MALE_CLIENTS_YTD);
+                        FEMALE_CLIENTS_YTD.push(e.FEMALE_CLIENTS_YTD);
+                        NUMBER_OF_CLIENTS_WITH_LOANS.push(e.NUMBER_OF_CLIENTS_WITH_LOANS);
+                    });
+                    var LABEL = ['MALE_CLIENTS_YTD', 'FEMALE_CLIENTS_YTD', 'NUMBER_OF_CLIENTS_WITH_LOANS'];
+                    var DATAS = [MALE_CLIENTS_YTD, FEMALE_CLIENTS_YTD, NUMBER_OF_CLIENTS_WITH_LOANS];
+                    var BKGCOLOR = ['#3498db', '#e74c3c', '#E87E04'];
+                    var BCOLOR = ['#3498db', '#e74c3c', '#E87E04'];
+                    var i=0;
+                    LABEL.forEach(function (l) {
+                        DATASETS.push({
+                            label: l,
+                            backgroundColor: BKGCOLOR[i],
+                            borderColor: BCOLOR[i],
+                            borderWidth: 1,
+                            data: DATAS[i]
+                        });
+                        i++;
+                    });
+                    console.log(LABEL);
+
+                    console.log(DATASETS);
+                    drawChart('bar');
+                    drawChart('pie')
+                }
+            });
+        });
+        
+        function drawChart(t) {
+            var ctx = $("#myChart");
+            if (t == 'bar') {
+                var myChart = new Chart(ctx, {
+                    type: t,
+                    data: {
+                        labels: LIBELLE,
+                        datasets: DATASETS
+
+                    },
+                    options: {
+                        responsive: true,
+
+                        scales: {
+                            yAxes: [{
+
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
+                        }
+                    }
+
+                });
+            }
+            if (t == 'pie') {
+                console.log(t);
+            }
+        }
+        $('.select-list').multiselect({
+            enableFiltering: true,
+            filterBehavior: 'value',
+            buttonWidth: '100%'
+        });
+        
+     
+    });
+</script>

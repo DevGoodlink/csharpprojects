@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="clubSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="assurance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datedebut" Type="date" />
+          <Property Name="datefin" Type="date" />
+        </EntityType>
+        <EntityType Name="membre">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nom" Type="nvarchar" MaxLength="20" />
+          <Property Name="prenom" Type="nvarchar" MaxLength="20" />
+          <Property Name="ddn" Type="date" />
+          <Property Name="adresse" Type="nvarchar" MaxLength="50" />
+          <Property Name="telephone" Type="nchar" MaxLength="10" />
+          <Property Name="disciplineSportive" Type="nvarchar" MaxLength="50" />
+          <Property Name="dateInscription" Type="nchar" MaxLength="10" />
+          <Property Name="idAssurance" Type="int" />
+        </EntityType>
+        <Association Name="FK_membre_assurance">
+          <End Role="assurance" Type="Self.assurance" Multiplicity="0..1" />
+          <End Role="membre" Type="Self.membre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assurance">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="membre">
+              <PropertyRef Name="idAssurance" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="clubSportModelStoreContainer">
+          <EntitySet Name="assurance" EntityType="Self.assurance" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="membre" EntityType="Self.membre" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_membre_assurance" Association="Self.FK_membre_assurance">
+            <End Role="assurance" EntitySet="assurance" />
+            <End Role="membre" EntitySet="membre" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="clubSportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="assurance">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datedebut" Type="DateTime" Precision="0" />
+          <Property Name="datefin" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="athlete" Relationship="clubSportModel.assuranceathlete" FromRole="assurance" ToRole="athlete" />
+        </EntityType>
+        <EntityType Name="membre" Abstract="true">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ddn" Type="DateTime" Precision="0" />
+          <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="clubSportEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="assurances" EntityType="Self.assurance" />
+          <EntitySet Name="membres" EntityType="Self.membre" />
+          <AssociationSet Name="assuranceathlete" Association="clubSportModel.assuranceathlete">
+            <End Role="athlete" EntitySet="membres" />
+            <End Role="assurance" EntitySet="assurances" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="athlete" BaseType="clubSportModel.membre" >
+          <Property Name="dateInscription" Type="DateTime" Nullable="false" />
+          <Property Name="idAssurance" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="assurances" Relationship="clubSportModel.assuranceathlete" FromRole="athlete" ToRole="assurance" />
+        </EntityType>
+        <EntityType Name="entraineur" BaseType="clubSportModel.membre" >
+          <Property Name="disciplineSportive" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="assuranceathlete">
+          <End Type="clubSportModel.athlete" Role="athlete" Multiplicity="1" />
+          <End Type="clubSportModel.assurance" Role="assurance" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="clubSportModelStoreContainer" CdmEntityContainer="clubSportEntities1">
+          <EntitySetMapping Name="assurances">
+            <EntityTypeMapping TypeName="clubSportModel.assurance">
+              <MappingFragment StoreEntitySet="assurance">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="datedebut" ColumnName="datedebut" />
+                <ScalarProperty Name="datefin" ColumnName="datefin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="membres">
+            <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.membre)">
+              <MappingFragment StoreEntitySet="membre">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="adresse" ColumnName="adresse" />
+                <ScalarProperty Name="ddn" ColumnName="ddn" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.athlete)">
+              <MappingFragment StoreEntitySet="membre">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idAssurance" ColumnName="idAssurance" />
+                <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+                <Condition ColumnName="disciplineSportive" IsNull="true" />
+                <Condition ColumnName="dateInscription" IsNull="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+            <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.entraineur)">
+              <MappingFragment StoreEntitySet="membre">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="disciplineSportive" ColumnName="disciplineSportive" />
+                <Condition ColumnName="dateInscription" IsNull="true" />
+                <Condition ColumnName="disciplineSportive" IsNull="false" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="assuranceathlete" TypeName="clubSportModel.assuranceathlete" StoreEntitySet="membre">
+            <EndProperty Name="assurance">
+              <ScalarProperty Name="id" ColumnName="idAssurance" />
+            </EndProperty>
+            <EndProperty Name="athlete">
+              <ScalarProperty Name="id" ColumnName="id" />
+            </EndProperty>
+            <Condition ColumnName="idAssurance" IsNull="false" />
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

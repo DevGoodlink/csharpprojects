@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tptModelStoreContainer" CdmEntityContainer="inheritance_tptEntities">
+    <EntitySetMapping Name="profs">
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.prof)">
+        <MappingFragment StoreEntitySet="prof">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.permanent)">
+        <MappingFragment StoreEntitySet="permanent">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="salaireMensuel" ColumnName="salaireMensuel" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.vaccataire)">
+        <MappingFragment StoreEntitySet="vaccataire">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nbreHeure" ColumnName="nbreHeure" />
+          <ScalarProperty Name="tauxHoraire" ColumnName="tauxHoraire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

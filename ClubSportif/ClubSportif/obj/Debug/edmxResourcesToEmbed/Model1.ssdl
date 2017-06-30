@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clubSportModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="assurance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="datedebut" Type="date" />
+    <Property Name="datefin" Type="date" />
+  </EntityType>
+  <EntityType Name="membre">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nom" Type="nvarchar" MaxLength="20" />
+    <Property Name="prenom" Type="nvarchar" MaxLength="20" />
+    <Property Name="ddn" Type="date" />
+    <Property Name="adresse" Type="nvarchar" MaxLength="50" />
+    <Property Name="telephone" Type="nchar" MaxLength="10" />
+    <Property Name="disciplineSportive" Type="nvarchar" MaxLength="50" />
+    <Property Name="dateInscription" Type="nchar" MaxLength="10" />
+    <Property Name="idAssurance" Type="int" />
+  </EntityType>
+  <Association Name="FK_membre_assurance">
+    <End Role="assurance" Type="Self.assurance" Multiplicity="0..1" />
+    <End Role="membre" Type="Self.membre" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="assurance">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="membre">
+        <PropertyRef Name="idAssurance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="clubSportModelStoreContainer">
+    <EntitySet Name="assurance" EntityType="Self.assurance" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="membre" EntityType="Self.membre" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_membre_assurance" Association="Self.FK_membre_assurance">
+      <End Role="assurance" EntitySet="assurance" />
+      <End Role="membre" EntitySet="membre" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

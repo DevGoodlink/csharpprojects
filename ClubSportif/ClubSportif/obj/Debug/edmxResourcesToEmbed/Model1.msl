@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="clubSportModelStoreContainer" CdmEntityContainer="clubSportEntities1">
+    <EntitySetMapping Name="assurances">
+      <EntityTypeMapping TypeName="clubSportModel.assurance">
+        <MappingFragment StoreEntitySet="assurance">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="datedebut" ColumnName="datedebut" />
+          <ScalarProperty Name="datefin" ColumnName="datefin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="membres">
+      <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.membre)">
+        <MappingFragment StoreEntitySet="membre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="ddn" ColumnName="ddn" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.athlete)">
+        <MappingFragment StoreEntitySet="membre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idAssurance" ColumnName="idAssurance" />
+          <ScalarProperty Name="dateInscription" ColumnName="dateInscription" />
+          <Condition ColumnName="disciplineSportive" IsNull="true" />
+          <Condition ColumnName="dateInscription" IsNull="false" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(clubSportModel.entraineur)">
+        <MappingFragment StoreEntitySet="membre">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="disciplineSportive" ColumnName="disciplineSportive" />
+          <Condition ColumnName="dateInscription" IsNull="true" />
+          <Condition ColumnName="disciplineSportive" IsNull="false" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="assuranceathlete" TypeName="clubSportModel.assuranceathlete" StoreEntitySet="membre">
+      <EndProperty Name="assurance">
+        <ScalarProperty Name="id" ColumnName="idAssurance" />
+      </EndProperty>
+      <EndProperty Name="athlete">
+        <ScalarProperty Name="id" ColumnName="id" />
+      </EndProperty>
+      <Condition ColumnName="idAssurance" IsNull="false" />
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

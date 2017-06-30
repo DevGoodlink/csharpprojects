@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="clubSportModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="assurance">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="datedebut" Type="DateTime" Precision="0" />
+    <Property Name="datefin" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="athlete" Relationship="clubSportModel.assuranceathlete" FromRole="assurance" ToRole="athlete" />
+  </EntityType>
+  <EntityType Name="membre" Abstract="true">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="prenom" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ddn" Type="DateTime" Precision="0" />
+    <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="telephone" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="clubSportEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="assurances" EntityType="Self.assurance" />
+    <EntitySet Name="membres" EntityType="Self.membre" />
+    <AssociationSet Name="assuranceathlete" Association="clubSportModel.assuranceathlete">
+      <End Role="athlete" EntitySet="membres" />
+      <End Role="assurance" EntitySet="assurances" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="athlete" BaseType="clubSportModel.membre">
+    <Property Name="dateInscription" Type="DateTime" Nullable="false" />
+    <Property Name="idAssurance" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="assurances" Relationship="clubSportModel.assuranceathlete" FromRole="athlete" ToRole="assurance" />
+  </EntityType>
+  <EntityType Name="entraineur" BaseType="clubSportModel.membre">
+    <Property Name="disciplineSportive" Type="String" Nullable="false" />
+  </EntityType>
+  <Association Name="assuranceathlete">
+    <End Type="clubSportModel.athlete" Role="athlete" Multiplicity="1" />
+    <End Type="clubSportModel.assurance" Role="assurance" Multiplicity="*" />
+  </Association>
+</Schema>

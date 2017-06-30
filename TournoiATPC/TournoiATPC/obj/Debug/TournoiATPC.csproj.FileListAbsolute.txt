@@ -1,0 +1,9 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\bin\Debug\TournoiATPC.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.csprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.Properties.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.csproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\bin\Debug\TournoiATPC.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\bin\Debug\TournoiATPC.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATPC\TournoiATPC\obj\Debug\TournoiATPC.pdb

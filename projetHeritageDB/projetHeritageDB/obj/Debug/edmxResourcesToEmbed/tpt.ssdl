@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="tptModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PERMANENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="salaireMensuel" Type="money" />
+  </EntityType>
+  <EntityType Name="PROF">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="10" />
+    <Property Name="Prenom" Type="varchar" MaxLength="10" />
+    <Property Name="email" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="VACCATAIRE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="TauxHoraire" Type="int" />
+    <Property Name="nbreHeure" Type="int" />
+  </EntityType>
+  <Association Name="FK_PERMANENT_PROF">
+    <End Role="PROF" Type="Self.PROF" Multiplicity="1" />
+    <End Role="PERMANENT" Type="Self.PERMANENT" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PROF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PERMANENT">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VACCATAIRE_PROF">
+    <End Role="PROF" Type="Self.PROF" Multiplicity="1" />
+    <End Role="VACCATAIRE" Type="Self.VACCATAIRE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="PROF">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VACCATAIRE">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="tptModelStoreContainer">
+    <EntitySet Name="PERMANENT" EntityType="Self.PERMANENT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROF" EntityType="Self.PROF" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VACCATAIRE" EntityType="Self.VACCATAIRE" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_PERMANENT_PROF" Association="Self.FK_PERMANENT_PROF">
+      <End Role="PROF" EntitySet="PROF" />
+      <End Role="PERMANENT" EntitySet="PERMANENT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VACCATAIRE_PROF" Association="Self.FK_VACCATAIRE_PROF">
+      <End Role="PROF" EntitySet="PROF" />
+      <End Role="VACCATAIRE" EntitySet="VACCATAIRE" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

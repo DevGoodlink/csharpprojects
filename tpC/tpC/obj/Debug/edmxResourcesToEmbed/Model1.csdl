@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="EmployeeSet" EntityType="Model1.Employee" />
+    <EntitySet Name="DepartementSet" EntityType="Model1.Departement" />
+    <AssociationSet Name="EmployeeDepartement" Association="Model1.EmployeeDepartement">
+      <End Role="Employee" EntitySet="EmployeeSet" />
+      <End Role="Departement" EntitySet="DepartementSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" />
+    <Property Name="LastName" Type="String" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" />
+    <Property Name="EmailId" Type="String" Nullable="false" />
+    <Property Name="IdDept" Type="String" Nullable="false" />
+    <NavigationProperty Name="Departement" Relationship="Model1.EmployeeDepartement" FromRole="Employee" ToRole="Departement" />
+  </EntityType>
+  <EntityType Name="Departement">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+    <Property Name="Adresse" Type="String" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="Model1.EmployeeDepartement" FromRole="Departement" ToRole="Employee" />
+  </EntityType>
+  <Association Name="EmployeeDepartement">
+    <End Type="Model1.Employee" Role="Employee" Multiplicity="*" />
+    <End Type="Model1.Departement" Role="Departement" Multiplicity="1" />
+  </Association>
+</Schema>

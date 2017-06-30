@@ -1,0 +1,16 @@
+﻿@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = "Formation Professionnelle";
+}
+
+<h2>Formation Professionnelle</h2>
+
+@foreach (var f in (List<FormationPro>)ViewData["Fpro"])
+{
+    <ul class="list-unstyled">
+        <li>@f.Libelle en @f.Description</li>
+        <li>Obtenu le : @f.DateFormation.ToShortDateString() à : @f.Etablissement</li>
+    </ul>
+    <hr />
+}

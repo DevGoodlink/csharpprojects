@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Validation Form";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<p>Remplir les champs de ce formulaire pour obtenir si votre carte est valide : </p>
+<form action="/home/valider" method="POST">
+    <label class="label label-default">Credit card Number : </label><br>
+    <input type="text" name="cn"><br>
+
+    <label class="label label-default">Expiry Date : </label><br>
+    <input class="form-control" type="date" name="ed"><br>
+
+    <label class="label label-default">Type : </label><br>
+    <input class="form-control" type="text" name="type"><br>
+
+    <label class="label label-default">Verification number : </label><br>
+    <input class="form-control" type="text" name="vn"><br>
+
+    <label class="label label-default">Access Token : </label><br>
+    <input class="form-control" type="text" name="at"><br>
+
+    <input class="btn btn-lg btn-primary" type="submit" value="Valider">
+</form>
+

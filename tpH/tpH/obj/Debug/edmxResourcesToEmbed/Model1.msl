@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="tptModelStoreContainer" CdmEntityContainer="tptEntities">
+    <EntitySetMapping Name="PROFESSEURs">
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.PROFESSEUR)">
+        <MappingFragment StoreEntitySet="PROFESSEUR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.VACATAIRE)">
+        <MappingFragment StoreEntitySet="PROFESSEUR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="tauxHoraire" ColumnName="tauxHoraire" />
+          <ScalarProperty Name="nbreHeure" ColumnName="nbreHeure" />
+          <Condition ColumnName="nbreHeure" IsNull="false" />
+          <Condition ColumnName="tauxHoraire" IsNull="false" />
+          <Condition ColumnName="salaireMensuel" IsNull="true" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(tptModel.PERMANENT)">
+        <MappingFragment StoreEntitySet="PROFESSEUR">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="salaireMensuel" ColumnName="salaireMensuel" />
+          <Condition ColumnName="nbreHeure" IsNull="true" />
+          <Condition ColumnName="tauxHoraire" IsNull="true" />
+          <Condition ColumnName="salaireMensuel" IsNull="false" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

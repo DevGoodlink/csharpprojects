@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="empModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="dept">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeptLabel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Adresse" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="emps" Relationship="empModel.deptemp" FromRole="dept" ToRole="emp" />
+  </EntityType>
+  <EntityType Name="emp">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="dept" Relationship="empModel.deptemp" FromRole="emp" ToRole="dept" />
+    <Property Name="deptId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="empEntities3" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="depts" EntityType="Self.dept" />
+    <EntitySet Name="emps" EntityType="Self.emp" />
+    <AssociationSet Name="deptemp" Association="empModel.deptemp">
+      <End Role="dept" EntitySet="depts" />
+      <End Role="emp" EntitySet="emps" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="deptemp">
+    <End Type="empModel.dept" Role="dept" Multiplicity="1" />
+    <End Type="empModel.emp" Role="emp" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dept">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="emp">
+        <PropertyRef Name="deptId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

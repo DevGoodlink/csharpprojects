@@ -1,0 +1,12 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\bin\Debug\BlocNotes_Vb.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\bin\Debug\BlocNotes_Vb.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\bin\Debug\BlocNotes_Vb.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\bin\Debug\BlocNotes_Vb.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.pdb
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\BlocNotes_Vb\BlocNotes_Vb\obj\Debug\BlocNotes_Vb.FrmRecherche.resources

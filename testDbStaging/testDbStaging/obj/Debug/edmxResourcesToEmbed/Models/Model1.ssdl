@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AGING">
+    <Key>
+      <PropertyRef Name="AGING_ID" />
+    </Key>
+    <Property Name="AGING_ID" Type="int" Nullable="false" />
+    <Property Name="AGING_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+    <Property Name="LAST_UPDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FACT_MFI">
+    <Key>
+      <PropertyRef Name="fact_id" />
+    </Key>
+    <Property Name="MFI_ID" Type="int" Nullable="false" />
+    <Property Name="SECTOR_ID" Type="int" Nullable="false" />
+    <Property Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="NUMBER_OF_CLIENTS_WITH_LOANS" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="MALE_CLIENTS_YTD" Type="float" />
+    <Property Name="FEMALE_CLIENTS_YTD" Type="float" />
+    <Property Name="MALE_CLIENTS_35" Type="float" />
+    <Property Name="FEMALE_CLIENTS_35" Type="float" />
+    <Property Name="NB_BRANCH_RURAL" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="NB_BRANCH_URBAN" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="GROSS_OUTSTANDING_PORTFOLIO" Type="float" />
+    <Property Name="OUTSTANDING_LOAN_GENDER_MALE" Type="float" />
+    <Property Name="OUTSTANDING_LOAN_GENDER_FEMALE" Type="float" />
+    <Property Name="TOTAL_LOAN_DISBURSED" Type="float" />
+    <Property Name="LOAN_DISBURSED_WOMEN" Type="float" />
+    <Property Name="LOAN_DISBURSED_MEN" Type="float" />
+    <Property Name="CURRENT_MFI" Type="float" />
+    <Property Name="OVERDUE_1_30" Type="float" />
+    <Property Name="OVERDUE_31_60" Type="float" />
+    <Property Name="OVERDUE_61_90" Type="float" />
+    <Property Name="OVERDUE_91_180" Type="float" />
+    <Property Name="OVERDUE_181_365" Type="float" />
+    <Property Name="OVERDUE_365" Type="float" />
+    <Property Name="CURRENT_PAR_0" Type="float" />
+    <Property Name="PAR_1_30_DAYS" Type="float" />
+    <Property Name="PAR_31_60_DAYS" Type="float" />
+    <Property Name="PAR_61_90" Type="float" />
+    <Property Name="PAR_91_180" Type="float" />
+    <Property Name="PAR_181_365" Type="float" />
+    <Property Name="PAR_365" Type="float" />
+    <Property Name="NO_OF_LOANS_SECTOR" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="OUTSTANDING_LOAN_SECTOR" Type="float" />
+    <Property Name="PAR_30_SECTOR_AMT" Type="float" />
+    <Property Name="NO_OF_LOANS_PURPOSE" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="OUTSTANDING_LOAN_PURPOSE" Type="numeric" Precision="28" Scale="0" />
+    <Property Name="PAR_30_PURPOSE_AMT" Type="float" />
+    <Property Name="PURPOSE_ID" Type="int" Nullable="false" />
+    <Property Name="AGING_ID" Type="int" Nullable="false" />
+    <Property Name="DATE_ID" Type="int" Nullable="false" />
+    <Property Name="TK_ID" Type="int" Nullable="false" />
+    <Property Name="MONTH_ID" Type="int" Nullable="false" />
+    <Property Name="YEAR_ID" Type="int" Nullable="false" />
+    <Property Name="QUARTER_ID" Type="int" Nullable="false" />
+    <Property Name="WEEK_ID" Type="int" Nullable="false" />
+    <Property Name="fact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MFI_DETAILS">
+    <Key>
+      <PropertyRef Name="MFI_id" />
+    </Key>
+    <Property Name="MFI_id" Type="int" Nullable="false" />
+    <Property Name="MFI_NAME" Type="nvarchar" MaxLength="255" />
+    <Property Name="Year_of_incorporation" Type="float" />
+    <Property Name="members_of_the_board" Type="float" />
+    <Property Name="Number_of_staff" Type="float" />
+    <Property Name="Number_of_loan_officers" Type="float" />
+    <Property Name="MIS" Type="nvarchar" MaxLength="255" />
+    <Property Name="Mission_statement" Type="nvarchar" MaxLength="255" />
+    <Property Name="Vision_statement" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="PURPOSE">
+    <Key>
+      <PropertyRef Name="PURPOSE_ID" />
+    </Key>
+    <Property Name="PURPOSE_ID" Type="int" Nullable="false" />
+    <Property Name="PURPOSE_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+    <Property Name="LAST_UPDATE" Type="datetime" />
+  </EntityType>
+  <EntityType Name="SECTOR">
+    <Key>
+      <PropertyRef Name="SECTOR_ID" />
+    </Key>
+    <Property Name="SECTOR_ID" Type="int" Nullable="false" />
+    <Property Name="SECTOR_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+    <Property Name="UPDATE_DATE" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_FACT_MFI_AGING">
+    <End Role="AGING" Type="Self.AGING" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGING">
+        <PropertyRef Name="AGING_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="AGING_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_MFI_DETAILS">
+    <End Role="MFI_DETAILS" Type="Self.MFI_DETAILS" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MFI_DETAILS">
+        <PropertyRef Name="MFI_id" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="MFI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_PURPOSE">
+    <End Role="PURPOSE" Type="Self.PURPOSE" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PURPOSE">
+        <PropertyRef Name="PURPOSE_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="PURPOSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_SECTOR">
+    <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECTOR">
+        <PropertyRef Name="SECTOR_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="SECTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CLIENT_SEXE_BY_MFI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mfiid" Type="int" Mode="In" />
+  </Function>
+  <Function Name="RURAL_URBAN_BY_MFI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="mfiid" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="AGING" EntityType="Self.AGING" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FACT_MFI" EntityType="Self.FACT_MFI" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MFI_DETAILS" EntityType="Self.MFI_DETAILS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PURPOSE" EntityType="Self.PURPOSE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_FACT_MFI_AGING" Association="Self.FK_FACT_MFI_AGING">
+      <End Role="AGING" EntitySet="AGING" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_MFI_DETAILS" Association="Self.FK_FACT_MFI_MFI_DETAILS">
+      <End Role="MFI_DETAILS" EntitySet="MFI_DETAILS" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_PURPOSE" Association="Self.FK_FACT_MFI_PURPOSE">
+      <End Role="PURPOSE" EntitySet="PURPOSE" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_SECTOR" Association="Self.FK_FACT_MFI_SECTOR">
+      <End Role="SECTOR" EntitySet="SECTOR" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

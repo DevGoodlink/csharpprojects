@@ -1,0 +1,16 @@
+﻿@using WebApplication1.Models;
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Formation Académique</h2>
+@foreach (var f in (List<Formation>)ViewData["Formation"])
+{
+    <ul class="list-unstyled">
+        <li>@f.Libelle en @f.Description</li>
+        <li>Obtenu le : @f.DateObtention.ToShortDateString() à : @f.Etablissement</li>
+        <li>Mention : @f.Mention</li>
+    </ul>
+    <hr />
+}

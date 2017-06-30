@@ -1,0 +1,1 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\TournoiATP\TournoiATP\bin\Debug\TournoiATP.exe.config

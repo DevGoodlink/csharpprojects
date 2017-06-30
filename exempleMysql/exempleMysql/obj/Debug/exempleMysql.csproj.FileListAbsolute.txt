@@ -1,0 +1,13 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\exempleMysql.exe.config
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\exempleMysql.exe
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\exempleMysql.pdb
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\MySql.Data.dll
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\obj\Debug\exempleMysql.csprojResolveAssemblyReference.cache
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\obj\Debug\exempleMysql.exe
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\exempleMysql\exempleMysql\obj\Debug\exempleMysql.pdb
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\EntityFramework.dll
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\EntityFramework.xml
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\YASSALIE\Documents\Visual Studio 2015\Projects\exempleMysql\exempleMysql\bin\Debug\MySql.Data.Entity.EF6.dll

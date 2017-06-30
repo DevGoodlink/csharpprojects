@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AGING">
+    <Key>
+      <PropertyRef Name="AGING_ID" />
+    </Key>
+    <Property Name="AGING_ID" Type="Int32" Nullable="false" />
+    <Property Name="AGING_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_AGING" FromRole="AGING" ToRole="FACT_MFI" />
+  </EntityType>
+  <EntityType Name="FACT_MFI">
+    <Key>
+      <PropertyRef Name="fact_id" />
+    </Key>
+    <Property Name="MFI_ID" Type="Int32" Nullable="false" />
+    <Property Name="SECTOR_ID" Type="Int32" Nullable="false" />
+    <Property Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="NUMBER_OF_CLIENTS_WITH_LOANS" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="MALE_CLIENTS_YTD" Type="Double" />
+    <Property Name="FEMALE_CLIENTS_YTD" Type="Double" />
+    <Property Name="MALE_CLIENTS_35" Type="Double" />
+    <Property Name="FEMALE_CLIENTS_35" Type="Double" />
+    <Property Name="NB_BRANCH_RURAL" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="NB_BRANCH_URBAN" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="GROSS_OUTSTANDING_PORTFOLIO" Type="Double" />
+    <Property Name="OUTSTANDING_LOAN_GENDER_MALE" Type="Double" />
+    <Property Name="OUTSTANDING_LOAN_GENDER_FEMALE" Type="Double" />
+    <Property Name="TOTAL_LOAN_DISBURSED" Type="Double" />
+    <Property Name="LOAN_DISBURSED_WOMEN" Type="Double" />
+    <Property Name="LOAN_DISBURSED_MEN" Type="Double" />
+    <Property Name="CURRENT_MFI" Type="Double" />
+    <Property Name="OVERDUE_1_30" Type="Double" />
+    <Property Name="OVERDUE_31_60" Type="Double" />
+    <Property Name="OVERDUE_61_90" Type="Double" />
+    <Property Name="OVERDUE_91_180" Type="Double" />
+    <Property Name="OVERDUE_181_365" Type="Double" />
+    <Property Name="OVERDUE_365" Type="Double" />
+    <Property Name="CURRENT_PAR_0" Type="Double" />
+    <Property Name="PAR_1_30_DAYS" Type="Double" />
+    <Property Name="PAR_31_60_DAYS" Type="Double" />
+    <Property Name="PAR_61_90" Type="Double" />
+    <Property Name="PAR_91_180" Type="Double" />
+    <Property Name="PAR_181_365" Type="Double" />
+    <Property Name="PAR_365" Type="Double" />
+    <Property Name="NO_OF_LOANS_SECTOR" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="OUTSTANDING_LOAN_SECTOR" Type="Double" />
+    <Property Name="PAR_30_SECTOR_AMT" Type="Double" />
+    <Property Name="NO_OF_LOANS_PURPOSE" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="OUTSTANDING_LOAN_PURPOSE" Type="Decimal" Precision="28" Scale="0" />
+    <Property Name="PAR_30_PURPOSE_AMT" Type="Double" />
+    <Property Name="PURPOSE_ID" Type="Int32" Nullable="false" />
+    <Property Name="AGING_ID" Type="Int32" Nullable="false" />
+    <Property Name="DATE_ID" Type="Int32" Nullable="false" />
+    <Property Name="TK_ID" Type="Int32" Nullable="false" />
+    <Property Name="MONTH_ID" Type="Int32" Nullable="false" />
+    <Property Name="YEAR_ID" Type="Int32" Nullable="false" />
+    <Property Name="QUARTER_ID" Type="Int32" Nullable="false" />
+    <Property Name="WEEK_ID" Type="Int32" Nullable="false" />
+    <Property Name="fact_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="AGING" Relationship="Self.FK_FACT_MFI_AGING" FromRole="FACT_MFI" ToRole="AGING" />
+    <NavigationProperty Name="MFI_DETAILS" Relationship="Self.FK_FACT_MFI_MFI_DETAILS" FromRole="FACT_MFI" ToRole="MFI_DETAILS" />
+    <NavigationProperty Name="PURPOSE" Relationship="Self.FK_FACT_MFI_PURPOSE" FromRole="FACT_MFI" ToRole="PURPOSE" />
+    <NavigationProperty Name="SECTOR" Relationship="Self.FK_FACT_MFI_SECTOR" FromRole="FACT_MFI" ToRole="SECTOR" />
+  </EntityType>
+  <EntityType Name="MFI_DETAILS">
+    <Key>
+      <PropertyRef Name="MFI_id" />
+    </Key>
+    <Property Name="MFI_id" Type="Int32" Nullable="false" />
+    <Property Name="MFI_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Year_of_incorporation" Type="Double" />
+    <Property Name="members_of_the_board" Type="Double" />
+    <Property Name="Number_of_staff" Type="Double" />
+    <Property Name="Number_of_loan_officers" Type="Double" />
+    <Property Name="MIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Mission_statement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Vision_statement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_MFI_DETAILS" FromRole="MFI_DETAILS" ToRole="FACT_MFI" />
+  </EntityType>
+  <EntityType Name="PURPOSE">
+    <Key>
+      <PropertyRef Name="PURPOSE_ID" />
+    </Key>
+    <Property Name="PURPOSE_ID" Type="Int32" Nullable="false" />
+    <Property Name="PURPOSE_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_PURPOSE" FromRole="PURPOSE" ToRole="FACT_MFI" />
+  </EntityType>
+  <EntityType Name="SECTOR">
+    <Key>
+      <PropertyRef Name="SECTOR_ID" />
+    </Key>
+    <Property Name="SECTOR_ID" Type="Int32" Nullable="false" />
+    <Property Name="SECTOR_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_SECTOR" FromRole="SECTOR" ToRole="FACT_MFI" />
+  </EntityType>
+  <Association Name="FK_FACT_MFI_AGING">
+    <End Role="AGING" Type="Self.AGING" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGING">
+        <PropertyRef Name="AGING_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="AGING_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_MFI_DETAILS">
+    <End Role="MFI_DETAILS" Type="Self.MFI_DETAILS" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MFI_DETAILS">
+        <PropertyRef Name="MFI_id" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="MFI_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_PURPOSE">
+    <End Role="PURPOSE" Type="Self.PURPOSE" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PURPOSE">
+        <PropertyRef Name="PURPOSE_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="PURPOSE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FACT_MFI_SECTOR">
+    <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
+    <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SECTOR">
+        <PropertyRef Name="SECTOR_ID" />
+      </Principal>
+      <Dependent Role="FACT_MFI">
+        <PropertyRef Name="SECTOR_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AGINGs" EntityType="Self.AGING" />
+    <EntitySet Name="FACT_MFI" EntityType="Self.FACT_MFI" />
+    <EntitySet Name="MFI_DETAILS" EntityType="Self.MFI_DETAILS" />
+    <EntitySet Name="PURPOSEs" EntityType="Self.PURPOSE" />
+    <EntitySet Name="SECTORs" EntityType="Self.SECTOR" />
+    <AssociationSet Name="FK_FACT_MFI_AGING" Association="Self.FK_FACT_MFI_AGING">
+      <End Role="AGING" EntitySet="AGINGs" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_MFI_DETAILS" Association="Self.FK_FACT_MFI_MFI_DETAILS">
+      <End Role="MFI_DETAILS" EntitySet="MFI_DETAILS" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_PURPOSE" Association="Self.FK_FACT_MFI_PURPOSE">
+      <End Role="PURPOSE" EntitySet="PURPOSEs" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FACT_MFI_SECTOR" Association="Self.FK_FACT_MFI_SECTOR">
+      <End Role="SECTOR" EntitySet="SECTORs" />
+      <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+    </AssociationSet>
+    <FunctionImport Name="CLIENT_SEXE_BY_MFI" ReturnType="Collection(Model.CLIENT_SEXE_BY_MFI_Result)">
+      <Parameter Name="mfiid" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="RURAL_URBAN_BY_MFI" ReturnType="Collection(Model.RURAL_URBAN_BY_MFI_Result)">
+      <Parameter Name="mfiid" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="CLIENT_SEXE_BY_MFI_Result">
+    <Property Type="String" Name="MFI_NAME" Nullable="true" MaxLength="255" />
+    <Property Type="Double" Name="MALE_CLIENTS_YTD" Nullable="true" />
+    <Property Type="Double" Name="FEMALE_CLIENTS_YTD" Nullable="true" />
+    <Property Type="Decimal" Name="NUMBER_OF_CLIENTS_WITH_LOANS" Nullable="true" Precision="28" Scale="0" />
+  </ComplexType>
+  <ComplexType Name="RURAL_URBAN_BY_MFI_Result">
+    <Property Type="String" Name="MFI_NAME" Nullable="true" MaxLength="255" />
+    <Property Type="Decimal" Name="NB_BRANCH_RURAL" Nullable="true" Precision="28" Scale="0" />
+    <Property Type="Decimal" Name="NB_BRANCH_URBAN" Nullable="true" Precision="28" Scale="0" />
+  </ComplexType>
+</Schema>

@@ -1,0 +1,16 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.vbprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.Form1.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.Resources.resources
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.vbproj.GenerateResource.Cache
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.pdb
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.exe.manifest
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\ransomeware\ransomeware\bin\Debug\ransomeware.application
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.TrustInfo.xml
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.exe.manifest
+C:\Users\YASSALIE\documents\visual studio 2015\Projects\ransomeware\ransomeware\obj\Debug\ransomeware.application

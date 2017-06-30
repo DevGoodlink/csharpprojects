@@ -1,0 +1,10 @@
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\tpEFCodeFirst.exe.config
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\obj\Debug\tpEFCodeFirst.csprojResolveAssemblyReference.cache
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\tpEFCodeFirst.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\tpEFCodeFirst.pdb
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\EntityFramework.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\EntityFramework.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\obj\Debug\tpEFCodeFirst.exe
+c:\users\yassalie\documents\visual studio 2015\Projects\tpEFCodeFirst\tpEFCodeFirst\obj\Debug\tpEFCodeFirst.pdb

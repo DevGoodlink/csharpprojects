@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="jumbotron alert-danger">
+    <h3>@Model.Restos.Nom</h3>
+    <ul class="list-unstyled">
+        <li><span class="glyphicon glyphicon-phone"></span> : @Model.Restos.Telephone</li>
+        <li><span class="glyphicon glyphicon-pencil"></span>Commentaire : @Model.Message</li>
+        <li><span class="glyphicon glyphicon-calendar"></span>Date du commentaire : @Model.Date</li>
+    </ul>
+
+</div>

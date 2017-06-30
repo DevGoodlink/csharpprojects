@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="Clinic.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="ClinicTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Clinic" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="ClinicContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="PersonneSet" EntityType="Clinic.Personne" />
+          <EntitySet Name="AdresseSet" EntityType="Clinic.Adresse" />
+          <AssociationSet Name="AdressePersonne" Association="Clinic.AdressePersonne">
+            <End Role="Adresse" EntitySet="AdresseSet" />
+            <End Role="Personne" EntitySet="PersonneSet" />
+          </AssociationSet>
+          <EntitySet Name="HospitalisationSet" EntityType="Clinic.Hospitalisation" />
+          <EntitySet Name="MaladieSet" EntityType="Clinic.Maladie" />
+          <AssociationSet Name="MedecinHospitalisation" Association="Clinic.MedecinHospitalisation">
+            <End Role="Medecin" EntitySet="PersonneSet" />
+            <End Role="Hospitalisation" EntitySet="HospitalisationSet" />
+          </AssociationSet>
+          <AssociationSet Name="PatientHospitalisation" Association="Clinic.PatientHospitalisation">
+            <End Role="Patient" EntitySet="PersonneSet" />
+            <End Role="Hospitalisation" EntitySet="HospitalisationSet" />
+          </AssociationSet>
+          <AssociationSet Name="MaladieHospitalisation" Association="Clinic.MaladieHospitalisation">
+            <End Role="Maladie" EntitySet="MaladieSet" />
+            <End Role="Hospitalisation" EntitySet="HospitalisationSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Patient" BaseType="Clinic.Personne">
+          <NavigationProperty Name="Hospitalisation" Relationship="Clinic.PatientHospitalisation" FromRole="Patient" ToRole="Hospitalisation" />
+          <Property Name="id" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Medecin" BaseType="Clinic.Personne">
+          <NavigationProperty Name="Hospitalisation" Relationship="Clinic.MedecinHospitalisation" FromRole="Medecin" ToRole="Hospitalisation" />
+          <Property Name="id" Type="Int16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Personne" Abstract="true">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nom" Type="String" Nullable="false" />
+          <Property Name="prenom" Type="String" Nullable="false" />
+          <Property Name="id_adresse" Type="String" Nullable="false" />
+          <NavigationProperty Name="Adresse" Relationship="Clinic.AdressePersonne" FromRole="Personne" ToRole="Adresse" />
+        </EntityType>
+        <EntityType Name="Adresse">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rue" Type="String" Nullable="false" />
+          <Property Name="adresse" Type="String" Nullable="false" />
+          <Property Name="codePostale" Type="String" Nullable="false" />
+          <Property Name="ville" Type="String" Nullable="false" />
+          <NavigationProperty Name="Personne" Relationship="Clinic.AdressePersonne" FromRole="Adresse" ToRole="Personne" />
+        </EntityType>
+        <Association Name="AdressePersonne">
+          <End Type="Clinic.Adresse" Role="Adresse" Multiplicity="1" />
+          <End Type="Clinic.Personne" Role="Personne" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Hospitalisation">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Medecin" Relationship="Clinic.MedecinHospitalisation" FromRole="Hospitalisation" ToRole="Medecin" />
+          <Property Name="MedecinId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Patient" Relationship="Clinic.PatientHospitalisation" FromRole="Hospitalisation" ToRole="Patient" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Maladie" Relationship="Clinic.MaladieHospitalisation" FromRole="Hospitalisation" ToRole="Maladie" />
+          <Property Name="MaladieId" Type="Int32" Nullable="false" />
+          <Property Name="dd" Type="DateTime" Nullable="false" />
+          <Property Name="df" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Maladie">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Hospitalisation" Relationship="Clinic.MaladieHospitalisation" FromRole="Maladie" ToRole="Hospitalisation" />
+          <Property Name="nomScientifique" Type="String" Nullable="false" />
+          <Property Name="nomCommun" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="MedecinHospitalisation">
+          <End Type="Clinic.Medecin" Role="Medecin" Multiplicity="*" />
+          <End Type="Clinic.Hospitalisation" Role="Hospitalisation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Medecin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hospitalisation">
+              <PropertyRef Name="MedecinId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PatientHospitalisation">
+          <End Type="Clinic.Patient" Role="Patient" Multiplicity="*" />
+          <End Type="Clinic.Hospitalisation" Role="Hospitalisation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Patient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hospitalisation">
+              <PropertyRef Name="PatientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="MaladieHospitalisation">
+          <End Type="Clinic.Maladie" Role="Maladie" Multiplicity="*" />
+          <End Type="Clinic.Hospitalisation" Role="Hospitalisation" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Maladie">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Hospitalisation">
+              <PropertyRef Name="MaladieId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="Clinic" />
+        <Alias Key="Target" Value="Clinic.Store" />
+        <EntityContainerMapping CdmEntityContainer="ClinicContainer" StorageEntityContainer="ClinicTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,502 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AGING">
+          <Key>
+            <PropertyRef Name="AGING_ID" />
+          </Key>
+          <Property Name="AGING_ID" Type="int" Nullable="false" />
+          <Property Name="AGING_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="LAST_UPDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="FACT_MFI">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="MFI_ID" Type="int" Nullable="false" />
+          <Property Name="SECTOR_ID" Type="int" Nullable="false" />
+          <Property Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="NUMBER_OF_CLIENTS_WITH_LOANS" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="MALE_CLIENTS_YTD" Type="float" />
+          <Property Name="FEMALE_CLIENTS_YTD" Type="float" />
+          <Property Name="MALE_CLIENTS_35" Type="float" />
+          <Property Name="FEMALE_CLIENTS_35" Type="float" />
+          <Property Name="NB_BRANCH_RURAL" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="NB_BRANCH_URBAN" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="GROSS_OUTSTANDING_PORTFOLIO" Type="float" />
+          <Property Name="OUTSTANDING_LOAN_GENDER_MALE" Type="float" />
+          <Property Name="OUTSTANDING_LOAN_GENDER_FEMALE" Type="float" />
+          <Property Name="TOTAL_LOAN_DISBURSED" Type="float" />
+          <Property Name="LOAN_DISBURSED_WOMEN" Type="float" />
+          <Property Name="LOAN_DISBURSED_MEN" Type="float" />
+          <Property Name="CURRENT_MFI" Type="float" />
+          <Property Name="OVERDUE_1_30" Type="float" />
+          <Property Name="OVERDUE_31_60" Type="float" />
+          <Property Name="OVERDUE_61_90" Type="float" />
+          <Property Name="OVERDUE_91_180" Type="float" />
+          <Property Name="OVERDUE_181_365" Type="float" />
+          <Property Name="OVERDUE_365" Type="float" />
+          <Property Name="CURRENT_PAR_0" Type="float" />
+          <Property Name="PAR_1_30_DAYS" Type="float" />
+          <Property Name="PAR_31_60_DAYS" Type="float" />
+          <Property Name="PAR_61_90" Type="float" />
+          <Property Name="PAR_91_180" Type="float" />
+          <Property Name="PAR_181_365" Type="float" />
+          <Property Name="PAR_365" Type="float" />
+          <Property Name="NO_OF_LOANS_SECTOR" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="OUTSTANDING_LOAN_SECTOR" Type="float" />
+          <Property Name="PAR_30_SECTOR_AMT" Type="float" />
+          <Property Name="NO_OF_LOANS_PURPOSE" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="OUTSTANDING_LOAN_PURPOSE" Type="numeric" Precision="28" Scale="0" />
+          <Property Name="PAR_30_PURPOSE_AMT" Type="float" />
+          <Property Name="PURPOSE_ID" Type="int" Nullable="false" />
+          <Property Name="AGING_ID" Type="int" Nullable="false" />
+          <Property Name="DATE_ID" Type="int" Nullable="false" />
+          <Property Name="TK_ID" Type="int" Nullable="false" />
+          <Property Name="MONTH_ID" Type="int" Nullable="false" />
+          <Property Name="YEAR_ID" Type="int" Nullable="false" />
+          <Property Name="QUARTER_ID" Type="int" Nullable="false" />
+          <Property Name="WEEK_ID" Type="int" Nullable="false" />
+          <Property Name="fact_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MFI_DETAILS">
+          <Key>
+            <PropertyRef Name="MFI_id" />
+          </Key>
+          <Property Name="MFI_id" Type="int" Nullable="false" />
+          <Property Name="MFI_NAME" Type="nvarchar" MaxLength="255" />
+          <Property Name="Year_of_incorporation" Type="float" />
+          <Property Name="members_of_the_board" Type="float" />
+          <Property Name="Number_of_staff" Type="float" />
+          <Property Name="Number_of_loan_officers" Type="float" />
+          <Property Name="MIS" Type="nvarchar" MaxLength="255" />
+          <Property Name="Mission_statement" Type="nvarchar" MaxLength="255" />
+          <Property Name="Vision_statement" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="PURPOSE">
+          <Key>
+            <PropertyRef Name="PURPOSE_ID" />
+          </Key>
+          <Property Name="PURPOSE_ID" Type="int" Nullable="false" />
+          <Property Name="PURPOSE_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="LAST_UPDATE" Type="datetime" />
+        </EntityType>
+        <EntityType Name="SECTOR">
+          <Key>
+            <PropertyRef Name="SECTOR_ID" />
+          </Key>
+          <Property Name="SECTOR_ID" Type="int" Nullable="false" />
+          <Property Name="SECTOR_DESCRIPTION" Type="nvarchar" MaxLength="255" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_FACT_MFI_AGING">
+          <End Role="AGING" Type="Self.AGING" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGING">
+              <PropertyRef Name="AGING_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="AGING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_MFI_DETAILS">
+          <End Role="MFI_DETAILS" Type="Self.MFI_DETAILS" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MFI_DETAILS">
+              <PropertyRef Name="MFI_id" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="MFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_PURPOSE">
+          <End Role="PURPOSE" Type="Self.PURPOSE" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PURPOSE">
+              <PropertyRef Name="PURPOSE_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="PURPOSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_SECTOR">
+          <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTOR">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CLIENT_SEXE_BY_MFI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mfiid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="RURAL_URBAN_BY_MFI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="mfiid" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="ModelStoreContainer">
+          <EntitySet Name="AGING" EntityType="Self.AGING" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FACT_MFI" EntityType="Self.FACT_MFI" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MFI_DETAILS" EntityType="Self.MFI_DETAILS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PURPOSE" EntityType="Self.PURPOSE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SECTOR" EntityType="Self.SECTOR" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FACT_MFI_AGING" Association="Self.FK_FACT_MFI_AGING">
+            <End Role="AGING" EntitySet="AGING" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_MFI_DETAILS" Association="Self.FK_FACT_MFI_MFI_DETAILS">
+            <End Role="MFI_DETAILS" EntitySet="MFI_DETAILS" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_PURPOSE" Association="Self.FK_FACT_MFI_PURPOSE">
+            <End Role="PURPOSE" EntitySet="PURPOSE" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_SECTOR" Association="Self.FK_FACT_MFI_SECTOR">
+            <End Role="SECTOR" EntitySet="SECTOR" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AGING">
+          <Key>
+            <PropertyRef Name="AGING_ID" />
+          </Key>
+          <Property Name="AGING_ID" Type="Int32" Nullable="false" />
+          <Property Name="AGING_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_AGING" FromRole="AGING" ToRole="FACT_MFI" />
+        </EntityType>
+        <EntityType Name="FACT_MFI">
+          <Key>
+            <PropertyRef Name="fact_id" />
+          </Key>
+          <Property Name="MFI_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="NUMBER_OF_CLIENTS_WITH_LOANS" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="MALE_CLIENTS_YTD" Type="Double" />
+          <Property Name="FEMALE_CLIENTS_YTD" Type="Double" />
+          <Property Name="MALE_CLIENTS_35" Type="Double" />
+          <Property Name="FEMALE_CLIENTS_35" Type="Double" />
+          <Property Name="NB_BRANCH_RURAL" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="NB_BRANCH_URBAN" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="GROSS_OUTSTANDING_PORTFOLIO" Type="Double" />
+          <Property Name="OUTSTANDING_LOAN_GENDER_MALE" Type="Double" />
+          <Property Name="OUTSTANDING_LOAN_GENDER_FEMALE" Type="Double" />
+          <Property Name="TOTAL_LOAN_DISBURSED" Type="Double" />
+          <Property Name="LOAN_DISBURSED_WOMEN" Type="Double" />
+          <Property Name="LOAN_DISBURSED_MEN" Type="Double" />
+          <Property Name="CURRENT_MFI" Type="Double" />
+          <Property Name="OVERDUE_1_30" Type="Double" />
+          <Property Name="OVERDUE_31_60" Type="Double" />
+          <Property Name="OVERDUE_61_90" Type="Double" />
+          <Property Name="OVERDUE_91_180" Type="Double" />
+          <Property Name="OVERDUE_181_365" Type="Double" />
+          <Property Name="OVERDUE_365" Type="Double" />
+          <Property Name="CURRENT_PAR_0" Type="Double" />
+          <Property Name="PAR_1_30_DAYS" Type="Double" />
+          <Property Name="PAR_31_60_DAYS" Type="Double" />
+          <Property Name="PAR_61_90" Type="Double" />
+          <Property Name="PAR_91_180" Type="Double" />
+          <Property Name="PAR_181_365" Type="Double" />
+          <Property Name="PAR_365" Type="Double" />
+          <Property Name="NO_OF_LOANS_SECTOR" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="OUTSTANDING_LOAN_SECTOR" Type="Double" />
+          <Property Name="PAR_30_SECTOR_AMT" Type="Double" />
+          <Property Name="NO_OF_LOANS_PURPOSE" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="OUTSTANDING_LOAN_PURPOSE" Type="Decimal" Precision="28" Scale="0" />
+          <Property Name="PAR_30_PURPOSE_AMT" Type="Double" />
+          <Property Name="PURPOSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="AGING_ID" Type="Int32" Nullable="false" />
+          <Property Name="DATE_ID" Type="Int32" Nullable="false" />
+          <Property Name="TK_ID" Type="Int32" Nullable="false" />
+          <Property Name="MONTH_ID" Type="Int32" Nullable="false" />
+          <Property Name="YEAR_ID" Type="Int32" Nullable="false" />
+          <Property Name="QUARTER_ID" Type="Int32" Nullable="false" />
+          <Property Name="WEEK_ID" Type="Int32" Nullable="false" />
+          <Property Name="fact_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="AGING" Relationship="Self.FK_FACT_MFI_AGING" FromRole="FACT_MFI" ToRole="AGING" />
+          <NavigationProperty Name="MFI_DETAILS" Relationship="Self.FK_FACT_MFI_MFI_DETAILS" FromRole="FACT_MFI" ToRole="MFI_DETAILS" />
+          <NavigationProperty Name="PURPOSE" Relationship="Self.FK_FACT_MFI_PURPOSE" FromRole="FACT_MFI" ToRole="PURPOSE" />
+          <NavigationProperty Name="SECTOR" Relationship="Self.FK_FACT_MFI_SECTOR" FromRole="FACT_MFI" ToRole="SECTOR" />
+        </EntityType>
+        <EntityType Name="MFI_DETAILS">
+          <Key>
+            <PropertyRef Name="MFI_id" />
+          </Key>
+          <Property Name="MFI_id" Type="Int32" Nullable="false" />
+          <Property Name="MFI_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Year_of_incorporation" Type="Double" />
+          <Property Name="members_of_the_board" Type="Double" />
+          <Property Name="Number_of_staff" Type="Double" />
+          <Property Name="Number_of_loan_officers" Type="Double" />
+          <Property Name="MIS" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Mission_statement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Vision_statement" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_MFI_DETAILS" FromRole="MFI_DETAILS" ToRole="FACT_MFI" />
+        </EntityType>
+        <EntityType Name="PURPOSE">
+          <Key>
+            <PropertyRef Name="PURPOSE_ID" />
+          </Key>
+          <Property Name="PURPOSE_ID" Type="Int32" Nullable="false" />
+          <Property Name="PURPOSE_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LAST_UPDATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_PURPOSE" FromRole="PURPOSE" ToRole="FACT_MFI" />
+        </EntityType>
+        <EntityType Name="SECTOR">
+          <Key>
+            <PropertyRef Name="SECTOR_ID" />
+          </Key>
+          <Property Name="SECTOR_ID" Type="Int32" Nullable="false" />
+          <Property Name="SECTOR_DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="FACT_MFI" Relationship="Self.FK_FACT_MFI_SECTOR" FromRole="SECTOR" ToRole="FACT_MFI" />
+        </EntityType>
+        <Association Name="FK_FACT_MFI_AGING">
+          <End Role="AGING" Type="Self.AGING" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGING">
+              <PropertyRef Name="AGING_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="AGING_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_MFI_DETAILS">
+          <End Role="MFI_DETAILS" Type="Self.MFI_DETAILS" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MFI_DETAILS">
+              <PropertyRef Name="MFI_id" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="MFI_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_PURPOSE">
+          <End Role="PURPOSE" Type="Self.PURPOSE" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PURPOSE">
+              <PropertyRef Name="PURPOSE_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="PURPOSE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FACT_MFI_SECTOR">
+          <End Role="SECTOR" Type="Self.SECTOR" Multiplicity="1" />
+          <End Role="FACT_MFI" Type="Self.FACT_MFI" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SECTOR">
+              <PropertyRef Name="SECTOR_ID" />
+            </Principal>
+            <Dependent Role="FACT_MFI">
+              <PropertyRef Name="SECTOR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGINGs" EntityType="Self.AGING" />
+          <EntitySet Name="FACT_MFI" EntityType="Self.FACT_MFI" />
+          <EntitySet Name="MFI_DETAILS" EntityType="Self.MFI_DETAILS" />
+          <EntitySet Name="PURPOSEs" EntityType="Self.PURPOSE" />
+          <EntitySet Name="SECTORs" EntityType="Self.SECTOR" />
+          <AssociationSet Name="FK_FACT_MFI_AGING" Association="Self.FK_FACT_MFI_AGING">
+            <End Role="AGING" EntitySet="AGINGs" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_MFI_DETAILS" Association="Self.FK_FACT_MFI_MFI_DETAILS">
+            <End Role="MFI_DETAILS" EntitySet="MFI_DETAILS" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_PURPOSE" Association="Self.FK_FACT_MFI_PURPOSE">
+            <End Role="PURPOSE" EntitySet="PURPOSEs" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FACT_MFI_SECTOR" Association="Self.FK_FACT_MFI_SECTOR">
+            <End Role="SECTOR" EntitySet="SECTORs" />
+            <End Role="FACT_MFI" EntitySet="FACT_MFI" />
+          </AssociationSet>
+          <FunctionImport Name="CLIENT_SEXE_BY_MFI" ReturnType="Collection(Model.CLIENT_SEXE_BY_MFI_Result)">
+          <Parameter Name="mfiid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="RURAL_URBAN_BY_MFI" ReturnType="Collection(Model.RURAL_URBAN_BY_MFI_Result)">
+            <Parameter Name="mfiid" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="CLIENT_SEXE_BY_MFI_Result">
+          <Property Type="String" Name="MFI_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="Double" Name="MALE_CLIENTS_YTD" Nullable="true" />
+          <Property Type="Double" Name="FEMALE_CLIENTS_YTD" Nullable="true" />
+          <Property Type="Decimal" Name="NUMBER_OF_CLIENTS_WITH_LOANS" Nullable="true" Precision="28" Scale="0" />
+        </ComplexType>
+        <ComplexType Name="RURAL_URBAN_BY_MFI_Result">
+          <Property Type="String" Name="MFI_NAME" Nullable="true" MaxLength="255" />
+          <Property Type="Decimal" Name="NB_BRANCH_RURAL" Nullable="true" Precision="28" Scale="0" />
+          <Property Type="Decimal" Name="NB_BRANCH_URBAN" Nullable="true" Precision="28" Scale="0" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AGINGs">
+            <EntityTypeMapping TypeName="Model.AGING">
+              <MappingFragment StoreEntitySet="AGING">
+                <ScalarProperty Name="AGING_ID" ColumnName="AGING_ID" />
+                <ScalarProperty Name="AGING_DESCRIPTION" ColumnName="AGING_DESCRIPTION" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FACT_MFI">
+            <EntityTypeMapping TypeName="Model.FACT_MFI">
+              <MappingFragment StoreEntitySet="FACT_MFI">
+                <ScalarProperty Name="MFI_ID" ColumnName="MFI_ID" />
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="NUMBER_OF_REGISTERED_CLIENTS_YTD" ColumnName="NUMBER_OF_REGISTERED_CLIENTS_YTD" />
+                <ScalarProperty Name="NUMBER_OF_CLIENTS_WITH_LOANS" ColumnName="NUMBER_OF_CLIENTS_WITH_LOANS" />
+                <ScalarProperty Name="MALE_CLIENTS_YTD" ColumnName="MALE_CLIENTS_YTD" />
+                <ScalarProperty Name="FEMALE_CLIENTS_YTD" ColumnName="FEMALE_CLIENTS_YTD" />
+                <ScalarProperty Name="MALE_CLIENTS_35" ColumnName="MALE_CLIENTS_35" />
+                <ScalarProperty Name="FEMALE_CLIENTS_35" ColumnName="FEMALE_CLIENTS_35" />
+                <ScalarProperty Name="NB_BRANCH_RURAL" ColumnName="NB_BRANCH_RURAL" />
+                <ScalarProperty Name="NB_BRANCH_URBAN" ColumnName="NB_BRANCH_URBAN" />
+                <ScalarProperty Name="GROSS_OUTSTANDING_PORTFOLIO" ColumnName="GROSS_OUTSTANDING_PORTFOLIO" />
+                <ScalarProperty Name="OUTSTANDING_LOAN_GENDER_MALE" ColumnName="OUTSTANDING_LOAN_GENDER_MALE" />
+                <ScalarProperty Name="OUTSTANDING_LOAN_GENDER_FEMALE" ColumnName="OUTSTANDING_LOAN_GENDER_FEMALE" />
+                <ScalarProperty Name="TOTAL_LOAN_DISBURSED" ColumnName="TOTAL_LOAN_DISBURSED" />
+                <ScalarProperty Name="LOAN_DISBURSED_WOMEN" ColumnName="LOAN_DISBURSED_WOMEN" />
+                <ScalarProperty Name="LOAN_DISBURSED_MEN" ColumnName="LOAN_DISBURSED_MEN" />
+                <ScalarProperty Name="CURRENT_MFI" ColumnName="CURRENT_MFI" />
+                <ScalarProperty Name="OVERDUE_1_30" ColumnName="OVERDUE_1_30" />
+                <ScalarProperty Name="OVERDUE_31_60" ColumnName="OVERDUE_31_60" />
+                <ScalarProperty Name="OVERDUE_61_90" ColumnName="OVERDUE_61_90" />
+                <ScalarProperty Name="OVERDUE_91_180" ColumnName="OVERDUE_91_180" />
+                <ScalarProperty Name="OVERDUE_181_365" ColumnName="OVERDUE_181_365" />
+                <ScalarProperty Name="OVERDUE_365" ColumnName="OVERDUE_365" />
+                <ScalarProperty Name="CURRENT_PAR_0" ColumnName="CURRENT_PAR_0" />
+                <ScalarProperty Name="PAR_1_30_DAYS" ColumnName="PAR_1_30_DAYS" />
+                <ScalarProperty Name="PAR_31_60_DAYS" ColumnName="PAR_31_60_DAYS" />
+                <ScalarProperty Name="PAR_61_90" ColumnName="PAR_61_90" />
+                <ScalarProperty Name="PAR_91_180" ColumnName="PAR_91_180" />
+                <ScalarProperty Name="PAR_181_365" ColumnName="PAR_181_365" />
+                <ScalarProperty Name="PAR_365" ColumnName="PAR_365" />
+                <ScalarProperty Name="NO_OF_LOANS_SECTOR" ColumnName="NO_OF_LOANS_SECTOR" />
+                <ScalarProperty Name="OUTSTANDING_LOAN_SECTOR" ColumnName="OUTSTANDING_LOAN_SECTOR" />
+                <ScalarProperty Name="PAR_30_SECTOR_AMT" ColumnName="PAR_30_SECTOR_AMT" />
+                <ScalarProperty Name="NO_OF_LOANS_PURPOSE" ColumnName="NO_OF_LOANS_PURPOSE" />
+                <ScalarProperty Name="OUTSTANDING_LOAN_PURPOSE" ColumnName="OUTSTANDING_LOAN_PURPOSE" />
+                <ScalarProperty Name="PAR_30_PURPOSE_AMT" ColumnName="PAR_30_PURPOSE_AMT" />
+                <ScalarProperty Name="PURPOSE_ID" ColumnName="PURPOSE_ID" />
+                <ScalarProperty Name="AGING_ID" ColumnName="AGING_ID" />
+                <ScalarProperty Name="DATE_ID" ColumnName="DATE_ID" />
+                <ScalarProperty Name="TK_ID" ColumnName="TK_ID" />
+                <ScalarProperty Name="MONTH_ID" ColumnName="MONTH_ID" />
+                <ScalarProperty Name="YEAR_ID" ColumnName="YEAR_ID" />
+                <ScalarProperty Name="QUARTER_ID" ColumnName="QUARTER_ID" />
+                <ScalarProperty Name="WEEK_ID" ColumnName="WEEK_ID" />
+                <ScalarProperty Name="fact_id" ColumnName="fact_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MFI_DETAILS">
+            <EntityTypeMapping TypeName="Model.MFI_DETAILS">
+              <MappingFragment StoreEntitySet="MFI_DETAILS">
+                <ScalarProperty Name="MFI_id" ColumnName="MFI_id" />
+                <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+                <ScalarProperty Name="Year_of_incorporation" ColumnName="Year_of_incorporation" />
+                <ScalarProperty Name="members_of_the_board" ColumnName="members_of_the_board" />
+                <ScalarProperty Name="Number_of_staff" ColumnName="Number_of_staff" />
+                <ScalarProperty Name="Number_of_loan_officers" ColumnName="Number_of_loan_officers" />
+                <ScalarProperty Name="MIS" ColumnName="MIS" />
+                <ScalarProperty Name="Mission_statement" ColumnName="Mission_statement" />
+                <ScalarProperty Name="Vision_statement" ColumnName="Vision_statement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PURPOSEs">
+            <EntityTypeMapping TypeName="Model.PURPOSE">
+              <MappingFragment StoreEntitySet="PURPOSE">
+                <ScalarProperty Name="PURPOSE_ID" ColumnName="PURPOSE_ID" />
+                <ScalarProperty Name="PURPOSE_DESCRIPTION" ColumnName="PURPOSE_DESCRIPTION" />
+                <ScalarProperty Name="LAST_UPDATE" ColumnName="LAST_UPDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SECTORs">
+            <EntityTypeMapping TypeName="Model.SECTOR">
+              <MappingFragment StoreEntitySet="SECTOR">
+                <ScalarProperty Name="SECTOR_ID" ColumnName="SECTOR_ID" />
+                <ScalarProperty Name="SECTOR_DESCRIPTION" ColumnName="SECTOR_DESCRIPTION" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CLIENT_SEXE_BY_MFI" FunctionName="Model.Store.CLIENT_SEXE_BY_MFI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.CLIENT_SEXE_BY_MFI_Result">
+                <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+                <ScalarProperty Name="MALE_CLIENTS_YTD" ColumnName="MALE_CLIENTS_YTD" />
+                <ScalarProperty Name="FEMALE_CLIENTS_YTD" ColumnName="FEMALE_CLIENTS_YTD" />
+                <ScalarProperty Name="NUMBER_OF_CLIENTS_WITH_LOANS" ColumnName="NUMBER_OF_CLIENTS_WITH_LOANS" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="RURAL_URBAN_BY_MFI" FunctionName="Model.Store.RURAL_URBAN_BY_MFI">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="Model.RURAL_URBAN_BY_MFI_Result">
+                <ScalarProperty Name="MFI_NAME" ColumnName="MFI_NAME" />
+                <ScalarProperty Name="NB_BRANCH_RURAL" ColumnName="NB_BRANCH_RURAL" />
+                <ScalarProperty Name="NB_BRANCH_URBAN" ColumnName="NB_BRANCH_URBAN" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

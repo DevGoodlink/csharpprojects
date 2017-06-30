@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BankModelStoreContainer" CdmEntityContainer="BankEntities">
+    <EntitySetMapping Name="CurrentAccounts">
+      <EntityTypeMapping TypeName="BankModel.CurrentAccount">
+        <MappingFragment StoreEntitySet="CurrentAccount">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="solde" ColumnName="solde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SavingAccounts">
+      <EntityTypeMapping TypeName="BankModel.SavingAccount">
+        <MappingFragment StoreEntitySet="SavingAccount">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="solde" ColumnName="solde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
